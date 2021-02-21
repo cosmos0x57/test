@@ -1,0 +1,74 @@
+import pandas as pd
+import numpy as np
+import os 
+from os import walk
+from openpyxl import load_workbook
+from time import time
+
+# start_time = time()
+# file1=pd.read_excel('C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\安捷暖通-5m-2020-1221-1227-2.xlsx', sheet_name="mySheet")
+# # row1=file1.loc[[0],:]
+# # a1=row1.to_numpy()
+# end_time = time()
+# print(end_time-start_time)
+# print(file1.columns.values)
+
+# np.save('file1.npy',file1)
+from glob import glob
+for _file in glob('xls2npy/*'):
+
+    start_time = time()
+    file1 = np.load(_file,allow_pickle=True)
+    end_time = time()
+    print(end_time-start_time)
+    print(file1[0])
+
+"""
+file2=pd.read_excel('C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\安捷暖通-5m-2020-1228-0103-2.xlsx', sheet_name="mySheet")
+row2=file2.loc[[0],:]
+a2=row2.to_numpy()
+for i in range(np.size(a2)):
+    if ((a1[i])!=(a2[i])):
+        list2=[a1[i],np.where(a1[i]),a2[i],np.where(a2[i])]
+        print(list2)
+"""
+"""
+for dirpath, dirnames, filenames in walk("C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -1号管理机"):
+
+    files = os.listdir(dirpath)
+    print(files)
+    print(dirpath)
+    print(dirnames)
+    print(filenames)
+    list1=[]
+
+
+
+for i in files:
+    fp=os.path.join(dirpath,i)
+    df=pd.read_excel(fp)
+    row1=df.columns
+    print(row1)
+    list1.append(row1)
+print(list1)
+"""
+
+#for i in range(len(list1)-1):
+    #print(list1[i]==list1[i+1])
+
+"""
+print(list1[1]==list1[2])
+print(list1[2]==list1[3])
+print(list1[3]==list1[4]) 
+print(list1[4]==list1[5])
+print(list1[5]==list1[6])
+print(list1[6]==list1[7]) 
+"""
+
+"""
+file1=pd.read_excel('C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\安捷暖通-5m-2020-1123-1129-2.xlsx', sheet_name="mySheet")
+nunique = file1.apply(pd.Series.nunique)
+cols_to_drop = nunique[nunique == 1].index
+file2=file1.drop(cols_to_drop, axis=1)
+file2.to_excel("C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\安捷暖通-5m-2020-1123-1129-2(fuben).xlsx", sheet_name="Sheet1")
+"""
