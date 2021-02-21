@@ -3,7 +3,7 @@ import pandas as pd
 import os
 out_dir = 'xls2npy'
 
-for root,parent,files in os.walk('C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\'):
+for root,parent,files in os.walk('C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -1号管理机\\'):
     for _file in files:
         if not _file.endswith('.xlsx'):
             print('Wrong format!')
@@ -24,3 +24,8 @@ for root,parent,files in os.walk('C:\\Users\\dell\\Desktop\\安捷物联图纸�
 # (1142,) -> (1,1142) + (2016,1142) -> (2017,1142)
 # a = [1,2,3] -> (3,)
 # [a] == [[1,2,3]] -> (1,3)
+
+#git status
+#git add .
+#it commit -m "update"
+#git push
