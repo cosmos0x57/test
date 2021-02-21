@@ -27,5 +27,5 @@ for root,parent,files in os.walk('C:\\Users\\dell\\Desktop\\安捷物联图纸�
 
 #git status
 #git add .
-#it commit -m "update"
+#git commit -m "update"
 #git push
