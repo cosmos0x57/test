@@ -25,14 +25,16 @@ from time import time
 #     print(end_time-start_time)
 #     print(file1[0])
 # 
-# 
-# file1 = np.load("E:\\tmp\\xls2npy\\安捷暖通-5m-2020-1221-1227-1.npy",allow_pickle=True)
-# file2 = np.load("E:\\tmp\\xls2npy\\安捷暖通-5m-2020-1228-0103-1.npy",allow_pickle=True)
+
+# file1 = np.load("E:\\tmp\\xls1npy\\安捷暖通-5m-2020-1221-1227-1.npy",allow_pickle=True)
+# file2 = np.load("E:\\tmp\\xls1npy\\安捷暖通-5m-2020-1228-0103-1.npy",allow_pickle=True)
 
 # for i in range(len(file1[0])):
 #     if not file1[0][i] == file2[0][i]:
 #         print('not same: ',file1[0][i],file2[0][i],i)
-# 
+#     else:
+#         print('all is same')
+
 # from glob import glob
 # list3=[]
 # for _file in glob('xls1npy/*'):
@@ -54,28 +56,25 @@ from time import time
 #         if not (list3[i] == list3[j]).all():
 #             print('not the same:',i,j)
 
-     
-# from glob import glob
-# for _file in glob('xls2npy/*'):
-#     file1 = np.load(_file,allow_pickle=True)
-#     print('file1=')
-#     print(file1)
-#     print(_file)
-#     if _file=="xls2npy\\安捷暖通-5m-2020-1123-1129-2.npy":
-#         np.save(('E:\\tmp\\安捷暖通-5m-2号合并.npy'),file1)
-#     else:
-#         file2=np.load('E:\\tmp\\安捷暖通-5m-2号合并.npy',allow_pickle=True)
-#         print('file2=')
-#         print(file2)
-#         file3=np.delete(file1,0,axis=0)
-#         print('file3=')
-#         print(file3)
-#         file4 = np.vstack((file2,file3))
-#         np.save('E:\\tmp\\安捷暖通-5m-2号合并.npy',file4)
-#         print(file4)
-file1 = np.load('E:\\tmp\\安捷暖通-5m-2号合并.npy',allow_pickle=True)
-print('file1=')
-print(file1)
+    
+from glob import glob
+for _file in glob('xls1npy/*'):
+    file1 = np.load(_file,allow_pickle=True)
+    print('file1=')
+    print(file1)
+    print(_file)
+    if _file=="xls1npy\\安捷暖通-5m-2020-1123-1129-1.npy":
+        np.save(('E:\\tmp\\安捷暖通-5m-1号合并.npy'),file1)
+    else:
+        file2=np.load('E:\\tmp\\安捷暖通-5m-1号合并.npy',allow_pickle=True)
+        print('file2=')
+        print(file2)
+        file3=np.delete(file1,0,axis=0)
+        print('file3=')
+        print(file3)
+        file4 = np.vstack((file2,file3))
+        np.save('E:\\tmp\\安捷暖通-5m-1号合并.npy',file4)
+        print(file4)
 
 
 # 
