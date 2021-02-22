@@ -33,16 +33,11 @@ from time import time
 #     if not file1[0][i] == file2[0][i]:
 #         print('not same: ',file1[0][i],file2[0][i],i)
 # 
-from glob import glob
-list3=[]
-# for i in range(len(glob('xls2npy/*'))):
-#     for _file in glob('xls2npy/*'):
-#         file1 = np.load(_file,allow_pickle=True)
-#     list3.append(file1[0])
-#     print(list3)
-for _file in glob('xls1npy/*'):
-    list3.append(np.load(_file,allow_pickle=True)[0])
-print(list3)
+# from glob import glob
+# list3=[]
+# for _file in glob('xls1npy/*'):
+#     list3.append(np.load(_file,allow_pickle=True)[0])
+# print(list3)
 
 # 计算复杂度 nlogn
 # for i in range(len(list3)-1): # 从i到N
@@ -53,46 +48,35 @@ print(list3)
 
 # 一个简单粗暴的方法：两层循环一模一样
 # 计算复杂度 n^2
-for i in range(len(list3)): # 从i到N
-    for j in range(len(list3)):
-        print(i,j)
-        if not (list3[i] == list3[j]).all():
-            print('not the same:',i,j)
-
-# for i in range((len(list3)-1)):y
-#     if list3[0][i]==list3[0][i+1]:
-#         print(i,'true')
+# for i in range(len(list3)): # 从i到N
+#     for j in range(len(list3)):
+#         print(i,j)
+#         if not (list3[i] == list3[j]).all():
+#             print('not the same:',i,j)
 
      
+# from glob import glob
+# for _file in glob('xls2npy/*'):
+#     file1 = np.load(_file,allow_pickle=True)
+#     print('file1=')
+#     print(file1)
+#     print(_file)
+#     if _file=="xls2npy\\安捷暖通-5m-2020-1123-1129-2.npy":
+#         np.save(('E:\\tmp\\安捷暖通-5m-2号合并.npy'),file1)
+#     else:
+#         file2=np.load('E:\\tmp\\安捷暖通-5m-2号合并.npy',allow_pickle=True)
+#         print('file2=')
+#         print(file2)
+#         file3=np.delete(file1,0,axis=0)
+#         print('file3=')
+#         print(file3)
+#         file4 = np.vstack((file2,file3))
+#         np.save('E:\\tmp\\安捷暖通-5m-2号合并.npy',file4)
+#         print(file4)
+file1 = np.load('E:\\tmp\\安捷暖通-5m-2号合并.npy',allow_pickle=True)
+print('file1=')
+print(file1)
 
-
-# 
-#  from glob import glob
-#  for _file in glob('xls2npy/*'):
-#      file1 = np.load(_file,allow_pickle=True)
-#      print('file1=')
-#      print(file1)
-#      if _file="安捷暖通-5m-2020-1123-1129-2.npy":
-#          np.save('E:\\tmp\\安捷暖通-5m-2号合并.npy'),file1)
-#      else:
-#          file2=np.load('E:\\tmp\\安捷暖通-5m-2号合并.npy',allow_pickle=True)
-#          print('file2=')
-#          print(file2)
-#          file3=np.delete(file1,0,axis=0)
-#          print('file3=')
-#          print(file3)
-#          file4 = np.vstack(([df.columns.values],df.values))
-# 
-
-# 
-# file2=pd.read_excel('C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\安捷暖通-5m-2020-1228-0103-2.xlsx', sheet_name="mySheet")
-# row2=file2.loc[[0],:]
-# a2=row2.to_numpy()
-# for i in range(np.size(a2)):
-#     if ((a1[i])!=(a2[i])):
-#         list2=[a1[i],np.where(a1[i]),a2[i],np.where(a2[i])]
-#         print(list2)
-# 
 
 # 
 # for dirpath, dirnames, filenames in walk("C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -1号管理机"):
@@ -118,14 +102,6 @@ for i in range(len(list3)): # 从i到N
 # #for i in range(len(list1)-1):
 #     #print(list1[i]==list1[i+1])
 
-# 
-# print(list1[1]==list1[2])
-# print(list1[2]==list1[3])
-# print(list1[3]==list1[4]) 
-# print(list1[4]==list1[5])
-# print(list1[5]==list1[6])
-# print(list1[6]==list1[7]) 
-# 
 
 # 
 # file1=pd.read_excel('C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\安捷暖通-5m-2020-1123-1129-2.xlsx', sheet_name="mySheet")
