@@ -57,24 +57,24 @@ from time import time
 #             print('not the same:',i,j)
 
     
-from glob import glob
-for _file in glob('xls1npy/*'):
-    file1 = np.load(_file,allow_pickle=True)
-    print('file1=')
-    print(file1)
-    print(_file)
-    if _file=="xls1npy\\安捷暖通-5m-2020-1123-1129-1.npy":
-        np.save(('E:\\tmp\\安捷暖通-5m-1号合并.npy'),file1)
-    else:
-        file2=np.load('E:\\tmp\\安捷暖通-5m-1号合并.npy',allow_pickle=True)
-        print('file2=')
-        print(file2)
-        file3=np.delete(file1,0,axis=0)
-        print('file3=')
-        print(file3)
-        file4 = np.vstack((file2,file3))
-        np.save('E:\\tmp\\安捷暖通-5m-1号合并.npy',file4)
-        print(file4)
+# from glob import glob
+# for _file in glob('xls1npy/*'):
+#     file1 = np.load(_file,allow_pickle=True)
+#     print('file1=')
+#     print(file1)
+#     print(_file)
+#     if _file=="xls1npy\\安捷暖通-5m-2020-1123-1129-1.npy":
+#         np.save(('E:\\tmp\\安捷暖通-5m-1号合并.npy'),file1)
+#     else:
+#         file2=np.load('E:\\tmp\\安捷暖通-5m-1号合并.npy',allow_pickle=True)
+#         print('file2=')
+#         print(file2)
+#         file3=np.delete(file1,0,axis=0)
+#         print('file3=')
+#         print(file3)
+#         file4 = np.vstack((file2,file3))
+#         np.save('E:\\tmp\\安捷暖通-5m-1号合并.npy',file4)
+#         print(file4)
 
 
 # 
@@ -108,4 +108,27 @@ for _file in glob('xls1npy/*'):
 # cols_to_drop = nunique[nunique == 1].index
 # file2=file1.drop(cols_to_drop, axis=1)
 # file2.to_excel("C:\\Users\\dell\\Desktop\\安捷物联图纸与数据\\安捷暖通 -2号管理机\\安捷暖通-5m-2020-1123-1129-2(fuben).xlsx", sheet_name="Sheet1")
-# 
+
+# from collections import Counterq
+file2=np.load('安捷暖通-5m-2号合并.npy',allow_pickle=True)
+# file3=file2[:,877] # 第877列
+# print(file3)
+# tmp = np.unique(file3[1:]) # 看来混合类型的array不支持unique，把第一个元素（列名）跳过
+# print(len(tmp))
+print(np.shape(file2))
+idx_to_del = []
+for i in range(len(file2[0])):
+    col=file2[:,i]
+    # print(col)
+    col_data=np.unique(col[1:])
+    # print(col_data)
+    if len(col_data)==1:
+        # print('column',i,'data:',col_data)
+        idx_to_del.append(i)
+
+file2 = np.delete(file2,idx_to_del,axis=1)
+print(np.shape(file2))
+np.save("E:\\tmp\\安捷暖通-5m-2号剔除.npy",file2)
+np.savetxt("E:\\tmp\\安捷暖通-5m-2号剔除.csv",file2,delimiter=",",fmt="%s")
+
+
