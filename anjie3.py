@@ -45,28 +45,31 @@ from time import time
 # df2.to_excel('E:\\处理数据及问题\\安捷暖通-5m-模型训练.xlsx', sheet_name='Sheet1')
 
 
-start_time = time()
-data = pd.read_excel('E:\\处理数据及问题\\安捷暖通-5m-模型训练-1.xlsx',sheet_name='Sheet1')
-array = data.values
-X = array[:, 0:161]
-Y = array[:, 161]
-validation_size = 0.1
-seed = 8
-X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y,test_size=validation_size, random_state=seed)
-knn = MLPRegressor()
-knn.fit(X_train,Y_train)
-K_pred = knn.predict(X_validation)
-score = r2_score(Y_validation, K_pred)
-end_time = time()  
-print(end_time-start_time)
-#需要用测试数据检验这个模型好不好
-# sklearn.metric提供了一些函数，用来计算真实值与预测值之间的预测误差：
-# 以_score结尾的函数，返回一个最大值，越高越好
+# start_time = time()
+# data = pd.read_excel('E:\\处理数据及问题\\安捷暖通-5m-模型训练-1.xlsx',sheet_name='Sheet1')
+# array = data.values
+# X = array[:, 0:161]
+# Y = array[:, 161]
+# validation_size = 0.1
+# seed = 8
+# X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y,test_size=validation_size, random_state=seed)
+# knn = MLPRegressor()
+# knn.fit(X_train,Y_train)
+# K_pred = knn.predict(X_validation)
+# score = r2_score(Y_validation, K_pred)
+# end_time = time()  
+# print(end_time-start_time)
+# #需要用测试数据检验这个模型好不好
+# # sklearn.metric提供了一些函数，用来计算真实值与预测值之间的预测误差：
+# # 以_score结尾的函数，返回一个最大值，越高越好
 
-plt.plot(np.arange(len(K_pred)),Y_validation,'g-',label = 'true value')
-plt.plot(np.arange(len(K_pred)),K_pred,'r-',label = 'predict value')
-print(score)
+# plt.plot(np.arange(len(K_pred)),Y_validation,'g-',label = 'true value')
+# plt.plot(np.arange(len(K_pred)),K_pred,'r-',label = 'predict value')
+# print(score)
 
-plt.legend()
-plt.savefig("E:\\处理数据及问题\\作图\\神经网络.png")
-plt.show()
+# plt.legend()
+# plt.savefig("E:\\处理数据及问题\\作图\\神经网络.png")
+# plt.show()
+
+df = pd.read_excel("E:\\处理数据及问题\\安捷暖通-5m-模型-末端.xlsx")
+np.save('E:\\处理数据及问题\\安捷暖通-5m-模型-末端.npy',df)
